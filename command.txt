@@ -1,0 +1,5 @@
+windows command 
+dir 
+cd
+mkdir
+del  
