@@ -3,3 +3,4 @@ dir
 cd
 mkdir
 del  
+rm
