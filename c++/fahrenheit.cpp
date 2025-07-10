@@ -4,17 +4,17 @@ using namespace std;
 int main(){
 	
 	
-	double celcius;
-const double value=1.8;
-const double fah=32;
-float fahrenheit;
+int celcius;
+   const float value=1.8;
+   const int fah=32;
+   float fahrenheit;
  
- cout<<"enter"<<endl;
+ cout<<"enter celcius "<<endl;
  cin>>celcius;
  
  
  fahrenheit=(celcius*1.8)+32;
- cout<<"fahrenheit"<<fahrenheit<<endl;
+ cout<<"fahrenheit"<< " "<<fahrenheit<<endl;
  
  	return 0;
 }
