@@ -6,17 +6,36 @@
 <body>
     <form action="/test" method="get">
       <label for="FirstName">First Name</label>
-      <input type="text" id="FirstName" name="FirstName" placeholder="FirstName"/><br/>
+      <input type="text" id="FirstName" name="FirstName" placeholder="FirstName" required/><br/>
          <br/>
       <label for="Password">Password</label>
       <input type="password" id="Password" name="Password" placeholder="Enter your password"/><br/><br/>
 
       <label for="MaleRadio">Male</label>
       <input type="radio" id="MaleRadio" name="gender" value="Male"/>
-<label for="FemaleRadio">Female</label>
+      <label for="FemaleRadio">Female</label>
       <input type="radio" id="FemaleRadio" name="gender" value="Female"/><br/><br/>
-      <button type="submit">submit</button>
-          <button type="reset">reset</button
+      <!--check box-->
+    <label for="MusicCheckbox">Music</label>
+      <input type="checkbox" id="MusicCheckbox"name="hobbies" value="Music"/><br/><br/>
+      <label for="SportCheckbox">Sport</label>
+      <input type="checkbox" id="SportCheckbox"name="hobbies" value="Sport"/><br/><br/>
+       <label for="BookCheckbox">Reading</label>
+      <input type="checkbox" id="BooktCheckbox"name="hobbies" value="Reading"/>
+      <br/><br/>
+      <!--dropdown-->
+      <label for="Country">Country</label>
+      <select id="Country" name="Country">
+         <option value="Eth" >Ethiopia</option>
+         <option value="UK"selected>England</option>
+         <option value="USA">America</option>
+      </select> <br/><br/>
+
+      <label for="comment">Comment</label><br/><br/>
+      <textarea id="comment" name="comment" rows="5" cols="20" placeholder="Type Your comment"></textarea>
+<br/><br/>
+            <button type="submit">submit</button>
+          <button type="reset">reset</button>
 
     </form>
 </body>
