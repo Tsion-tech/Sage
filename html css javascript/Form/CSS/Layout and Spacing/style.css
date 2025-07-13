@@ -1,0 +1,35 @@
+h1{
+    background-color: aqua;
+    width: 500px;
+    display: inline-block;
+
+}
+body{
+    margin: 0;
+}
+ h2{ 
+    /* display: inline-block; */
+    position: relative;
+    top: 10px;
+    left: 20px;
+}
+a{
+    background-color: brown;
+    display:inline-block;
+    /* width: 100px; */
+}
+.box{
+    background-color: rgb(238, 157, 7);
+    padding: 20px 30px ;
+    margin: 0 auto;
+    position: sticky;
+    top: 10px;
+    max-width: 300px;
+    min-width: 200px;
+    left: 10px;
+}
+
+p{
+    position: absolute;
+    top: 10px;
+}

@@ -2,10 +2,28 @@
    color: rgb(29, 7, 224);
 }
 
-p {
+p::first-letter {
    color: red;
-   font-size: 20px;
+   font-size: 80px;
 }
+h3::after{
+   color: rgb(0, 110, 255);
+   font-size: 70px;
+
+}
+h1::after{
+   content:'(@_@)';
+   color: rgb(105, 128, 0);
+}
+::marker.ol{
+   color: rgb(81, 255, 0);
+   font-size: 50px;
+}
+::selection{
+   color: rgb(255, 0, 221);
+   background-color: yellow;
+}
+
 
 
 #headingstyleusingid {
