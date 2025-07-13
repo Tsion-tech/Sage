@@ -5,10 +5,10 @@ using namespace std;
 int main() {
     const int size = 12;
 
-    // Calculate max width needed for the biggest number (12x12 = 144)
+    // Calculate max width for the biggest number (12x12 = 144)
     const int cellWidth = 4;
 
-    // Top border
+
     cout << "*";
     for (int i = 0; i <= size; i++) {
         for (int j = 0; j < cellWidth; j++) cout << "-";
@@ -16,7 +16,7 @@ int main() {
     }
     cout << "\n";
 
-    // Header row (0 to 12)
+    //  row (0 to 12)
     cout << "|";
     cout << setw(cellWidth) << " ";
     cout << "|";
@@ -25,7 +25,7 @@ int main() {
     }
     cout << "\n";
 
-    // Header separator line
+    // Head separator line
     cout << "*";
     for (int i = 0; i <= size; i++) {
         for (int j = 0; j < cellWidth; j++) cout << "-";
