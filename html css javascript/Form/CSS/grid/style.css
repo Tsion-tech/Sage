@@ -1,0 +1,15 @@
+p{
+    font-size: 50px;
+    background-color: aqua;
+    color: brown;
+    margin: 0;
+}
+.grid-box{
+    display:grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+}
+ .item1{
+    grid-column-start: 1;
+    grid-column-end: 4;
+ }
