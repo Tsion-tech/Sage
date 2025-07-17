@@ -5,6 +5,7 @@ import"./App.css"
 import{useState} from "react";
 import LoginAndLogout from "./components/Conditional/LoginAndLogout";
 import ReactList from "./components/ReactList";
+import UseEffectHook  from "./components/UseEffectHook";
 function App(){
   const [counter, setCounter]= useState(0)
   return <div>
@@ -14,11 +15,12 @@ function App(){
     <Button text="Register"/>
     <br/><br/>
     <button onClick={()=>setCounter(counter+1)}>Add</button>
-      <h1 style={{display:'inline',margin:'0 10px'}}>{counter}</h1>
+      <h1 style={{color:"lightpink",display:"inline-block",backgroundColor:"Darkred",margin:'0 10px'}}>{counter}</h1>
       <button onClick={()=>setCounter(counter-1)}>Subtract</button>
       <br/><br/>
         <LoginAndLogout/>
         <ReactList/>
+        <UseEffectHook/>
     </div>
     
  

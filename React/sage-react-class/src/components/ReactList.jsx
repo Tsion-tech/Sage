@@ -1,5 +1,5 @@
 function ReactList(){
-    const cars=["BYD","BMW","TOYOTA","HUNDA","BYD"]
+    const cars=["BMW","TOYOTA","HUNDA","Bugatti"]
 return(
     <>
     <ul>
