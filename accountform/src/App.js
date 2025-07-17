@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import Card from './Component/CreateAccount';
+
+import AccountPage from './Component/AccountPage';
 
 function App() {
   return (
     <div className="App">
-      <Card/>
+      <AccountPage/>
       
     </div>
   );

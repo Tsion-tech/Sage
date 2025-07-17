@@ -1,27 +1,14 @@
 import React, { useState } from 'react';
 
-function Card() {
+function AccountPage() {
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [gender, setGender] = useState("");
   const [age, setAge] = useState("");
   const [hobbies, setHobbies] = useState([]);
 
-  function handleFname(e) {
-    setFname(e.target.value);
-  }<br/> 
 
-  function handleLname(e) {
-    setLname(e.target.value);
-  }<br/>
-   
-  function handleAge(e) {
-    setAge(e.target.value);
-  }<br/>
-  
-function handleGender(e) {
-    setGender(e.target.value);
-  }
+
 
   function handleHobby(e) {
     if (e.target.checked) {
@@ -47,24 +34,26 @@ function handleGender(e) {
     <div>
       <h2>Create Account</h2>
 
-      <input placeholder="First Name" onChange={handleFname} /><br /><br/>
+      <input placeholder="First Name" onChange={(e) => {
+        setFname(e.target.value);
+      }} /><br /><br />
 
-      <input placeholder="Last Name" onChange={handleLname} /><br /><br/>
-       
-      <input placeholder="Age" onChange={handleAge} /><br /><br/>
+      <input placeholder="Last Name" onChange={(e)=> setLname(e.target.value)} /><br /><br />
 
-      <input type="radio" name="gender" value="Male" onChange={handleGender} /> Male
-      <input type="radio" name="gender" value="Female" onChange={handleGender} /> Female<br />
+      <input placeholder="Age" onChange={(e)=> setAge(e.target.value)} /><br /><br />
 
-     
-      <label><input type="checkbox" value="Music" onChange={handleHobby} /> Music</label><br/>
-      <label><input type="checkbox" value="Football" onChange={handleHobby} /> Football</label><br/>
-      <label><input type="checkbox" value="Boxing" onChange={handleHobby} /> Boxing</label><br/>
-      <label><input type="checkbox" value="Swimming" onChange={handleHobby} /> Swimming</label><br /><br/>
+      <input type="radio" name="gender" value="Male" onChange={(e)=> setGender(e.target.value)} /> Male
+      <input type="radio" name="gender" value="Female" onChange={(e)=> setGender(e.target.value)} /> Female<br />
+
+
+      <label><input type="checkbox" value="Music" onChange={handleHobby} /> Music</label><br />
+      <label><input type="checkbox" value="Football" onChange={handleHobby} /> Football</label><br />
+      <label><input type="checkbox" value="Boxing" onChange={handleHobby} /> Boxing</label><br />
+      <label><input type="checkbox" value="Swimming" onChange={handleHobby} /> Swimming</label><br /><br />
 
       <button onClick={showAlert}>Create Account</button>
     </div>
   );
 }
 
-export default Card;
+export default AccountPage;
