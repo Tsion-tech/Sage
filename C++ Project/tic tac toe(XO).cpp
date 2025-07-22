@@ -5,10 +5,10 @@ char board[3][3];
 char currentPlayer = 'X';
 
 void initializeBoard() {
-    char cell = '1';
+    char box = '1';
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            board[i][j] = cell++;
+            board[i][j] = box++;
         }
     }
 }
@@ -56,9 +56,17 @@ bool checkDraw() {
     return true;
 }
 
-void switchPlayer() {
-    currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
+void  switchPlayer(){
+	
+	if(currentPlayer =='x'){
+		
+		currentPlayer ='0';
+	}else {
+		currentPlayer='x';
+	}
+	
 }
+
 
 void makeMove() {
     int move;
