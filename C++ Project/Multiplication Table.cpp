@@ -4,10 +4,7 @@ using namespace std;
 
 int main() {
     const int size = 12;
-
-    // Calculate max width for the biggest number (12x12 = 144)
     const int cellWidth = 4;
-
 
     cout << "*";
     for (int i = 0; i <= size; i++) {
@@ -16,7 +13,6 @@ int main() {
     }
     cout << "\n";
 
-    //  row (0 to 12)
     cout << "|";
     cout << setw(cellWidth) << " ";
     cout << "|";
@@ -25,7 +21,6 @@ int main() {
     }
     cout << "\n";
 
-    // Head separator line
     cout << "*";
     for (int i = 0; i <= size; i++) {
         for (int j = 0; j < cellWidth; j++) cout << "-";
@@ -33,9 +28,8 @@ int main() {
     }
     cout << "\n";
 
-    // Table body
     for (int row = 1; row <= size; row++) {
-        // Start of each row
+    	
         cout << "|";
         cout << setw(cellWidth) << row << "|";
 
@@ -44,7 +38,6 @@ int main() {
         }
         cout << "\n";
 
-        // Bottom line after each row
         cout << "*";
         for (int i = 0; i <= size; i++) {
             for (int j = 0; j < cellWidth; j++) cout << "-";
