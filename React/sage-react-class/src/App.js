@@ -6,6 +6,7 @@ import{useState} from "react";
 import LoginAndLogout from "./components/Conditional/LoginAndLogout";
 import ReactList from "./components/ReactList";
 import UseEffectHook  from "./components/UseEffectHook";
+import Card from "./components/Card";
 function App(){
   const [counter, setCounter]= useState(0)
   return <div>
@@ -21,6 +22,7 @@ function App(){
         <LoginAndLogout/>
         <ReactList/>
         <UseEffectHook/>
+        <Card/>
     </div>
     
  
