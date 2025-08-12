@@ -21,12 +21,15 @@ import Button from "./Component/Button";
 function App() {
   const count=useSelector((state)=> state.counter.value);
     
-  return (
+  return ( 
     <div style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
+    <div style={{display:"flex",color:"orange",backgroundColor:"#031154",padding:"15px",flexDirection:"column",alignItems:"center"}}>
       <h1>Awash counter app</h1>
+      </div>
       <h1>{count}</h1>
       <Button/>
     </div>
+    
   )
 } 
 
