@@ -16,9 +16,8 @@
 //   );
 // }
 
-import Button from"./components/Button"
-import { useSelector } from "react-redux";
-
+import {useSelector} from "react-redux";
+import Button from "./Component/Button";
 function App() {
   const count=useSelector((state)=> state.counter.value);
     
@@ -29,5 +28,6 @@ function App() {
       <Button/>
     </div>
   )
-}
+} 
+
 export default App;

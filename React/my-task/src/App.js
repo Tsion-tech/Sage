@@ -1,21 +1,21 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './Components/Navbar';
+import Home from './Page/Home';
+import AddTask from './Page/AddTask';
+import About from './Page/About';
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home'
-import AddTask from './pages/AddTask';
-import About from './pages/About';
 function App() {
   return (
-    <div >
-      <BrowserRouter>
+    <Router>
+      <Navbar />
+      <div style={{ padding: '20px' }}>
         <Routes>
-          <Route path="/"/>
-          <Route index element={<Home/>}/>
-          <Route path="AddTask"element={<AddTask/>}/>
-          <Route path="About"element={<About/>}/>
+          <Route path="/" element={<Home />} />
+          <Route path="/add" element={<AddTask />} />
+          <Route path="/about" element={<About />} />
         </Routes>
-      </BrowserRouter>
-
-    </div>
+      </div>
+    </Router>
   );
 }
 

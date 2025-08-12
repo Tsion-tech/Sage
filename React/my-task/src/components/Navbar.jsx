@@ -1,13 +1,11 @@
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom';
 
-export function Navbar() {
-    return (
-        <div>
-            <Link to="/">Home</Link>
-            <Link to="/About">About</Link>
-            <Link to="/AddTask">Add Task</Link>
-            <h1>My Task App</h1>
-        </div>
-
-    );
+export default function Navbar() {
+  return (
+    <nav style={{ display: 'flex', gap: '10px', padding: '10px', background: '#eee' }}>
+      <Link to="/">Home</Link>
+      <Link to="/add">Add Task</Link>
+      <Link to="/about">About</Link>
+    </nav>
+  );
 }
