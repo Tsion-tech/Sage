@@ -9,6 +9,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './components/pages/Home';
 import About from './components/pages/About';
+import LazyLoad from './components/pages/LazyLoad';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="About" component={About} />
+          <Stack.Screen name="LazyLoad" component={LazyLoad} />
       </Stack.Navigator>
     </NavigationContainer>
 
