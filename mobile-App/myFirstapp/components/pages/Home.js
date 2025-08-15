@@ -7,9 +7,12 @@ export default function Home({ navigation }) {
 
             <Button  title="About" onPress={() => navigation.navigate("About")} />
 
-            <View style={{ margin: 20 }}>
+          
                 <Button   title="LazyLoad" onPress={() => navigation.navigate("LazyLoad")} style={{backgroundColor:"green"}} />
-            </View>
+
+
+             <Button  title="Posts" onPress={() => navigation.navigate("Posts")} />
+
         </View>
     )
 }

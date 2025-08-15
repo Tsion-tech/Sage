@@ -10,24 +10,24 @@ export default function Button() {
   return (
     <View style={{ flexDirection: "row", gap: 15, marginTop: 20 }}>
       <Pressable
-        style={{ backgroundColor: "#07cee0", padding: 10 }}
+        style={{ backgroundColor: "#07cee0", padding: 10, borderRadius:30}}
         onPress={() => dispatch(add())}
       >
-        <Text style={{ color: "#fff", fontWeight: "bold" }}>Add</Text>
+        <Text style={{ color: "#ed15f5ff", fontWeight: "bold" }}>Add</Text>
       </Pressable>
 
       <Pressable
-        style={{ backgroundColor: "#07cee0", padding: 10 }}
+        style={{ backgroundColor: "#07cee0", padding: 10 ,borderRadius:30}}
         onPress={() => dispatch(subtract())}
       >
-        <Text style={{ color: "#fff", fontWeight: "bold" }}>Subtract</Text>
+        <Text style={{ color: "#ed15f5ff", fontWeight: "bold" }}>Subtract</Text>
       </Pressable>
 
       <Pressable
-        style={{ backgroundColor: "#c8790b", padding: 10}}
+        style={{ backgroundColor: "#c8790b", padding: 10,borderRadius:30}}
         onPress={() => dispatch(reset())}
       >
-        <Text style={{ color: "#fff", fontWeight: "bold" }}>Reset</Text>
+        <Text style={{ color: "#ed15f5ff", fontWeight: "bold" }}>Reset</Text>
       </Pressable>
     </View>
   );

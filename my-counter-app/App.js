@@ -11,16 +11,9 @@ function CounterApp() {
     <SafeAreaView
       style={{ flex: 1, flexDirection: "column", alignItems: "center", justifyContent: "center" }}
     >
-      <View
-        style={{
-          color: "orange",
-          backgroundColor: "#031154",
-          padding: 15,
-          flexDirection: "column",
-          alignItems: "center"
-        }}
-      >
-        <Text style={{ fontSize: 24, fontWeight: "bold", color: "orange" }}>
+      <View>
+       
+        <Text style={{ fontSize: 24,  padding: 15,flexDirection: "column",alignItems: "center",fontWeight: "bold",   backgroundColor: "#031154",color: "orange" }}>
           Awash Counter App
         </Text>
       </View>
