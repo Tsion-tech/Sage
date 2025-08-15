@@ -10,6 +10,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './components/pages/Home';
 import About from './components/pages/About';
 import LazyLoad from './components/pages/LazyLoad';
+import Posts from './components/pages/Posts';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="About" component={About} />
           <Stack.Screen name="LazyLoad" component={LazyLoad} />
+             <Stack.Screen name="Posts" component={Posts} />
       </Stack.Navigator>
     </NavigationContainer>
 
