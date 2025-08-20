@@ -6,7 +6,7 @@ import location from '../../images/location.png';
 export default function Contacts() {
   return (
 
-<div id ="contact"className="contact-section">
+<div id ="contact"className="contact">
 
   
   <div className="contact-left">
