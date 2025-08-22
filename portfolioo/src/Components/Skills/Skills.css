@@ -8,7 +8,6 @@
 }
 .skills-title{
     position: relative;
-    color:"rgba(230, 124, 202, 1)"
 }
 .skills-title h1{
     padding: 0px 30px;
@@ -20,7 +19,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 20px;
-    padding: 60px;
+    padding: 100px;
     border-radius: 10px;
     border: 2px solid white;
     transition: 0.4s;

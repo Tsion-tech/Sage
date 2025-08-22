@@ -9,7 +9,6 @@ import {
   percent,
   clearEntry,
 } from "./Redux/CalculatorSlice";
-
 import Wrapper from "./Components/Wrapper";
 import Screen from "./Components/Screen";
 import ButtonBox from "./Components/ButtonBox";
@@ -45,20 +44,22 @@ const App = () => {
     }
   };
 
+  
+  let display = "";
+  if (calc.res) display += calc.res;
+  if (calc.sign) display += ` ${calc.sign}`;
+  if (calc.num) display += ` ${calc.num}`;
+
   return (
     <Wrapper>
-      <Screen
-        value={calc.num !== "" ? calc.num : calc.res }
-        history={calc.history}
-      />
-
+      <Screen value={display} />
       <ButtonBox>
         {btnValues.flat().map((btn, i) => (
           <Button
             key={i}
             value={btn}
             className={btn === "=" ? "equals" : ""}
-            onClick={() => handleClick(btn)}
+            onClick={handleClick}
           />
         ))}
       </ButtonBox>

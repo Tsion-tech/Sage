@@ -2,41 +2,27 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   num: "",      
-  res: "0",     
+  res: "",      
   sign: "",     
-  history: "",  
 };
 
 const calculatorSlice = createSlice({
   name: "calculator",
   initialState,
   reducers: {
-    reset: () => initialState,
+    reset: () => initialState, 
 
     setNum: (state, action) => {
       const value = action.payload;
-
-      
       if (value === "0" && state.num === "0") return;
-
-      
       if (value === "." && state.num.includes(".")) return;
-
-      
-      if (state.res !== "0" && state.sign === "" && state.num === "") {
-        state.res = "0";
-      }
-
       state.num = state.num + value;
     },
 
     setSign: (state, action) => {
       const num = parseFloat(state.num);
-
-      
       if (state.num !== "") {
         if (state.sign && state.res !== "Error") {
-          
           const res = parseFloat(state.res);
           switch (state.sign) {
             case "+": state.res = String(res + num); break;
@@ -46,15 +32,11 @@ const calculatorSlice = createSlice({
             default: break;
           }
         } else {
-          
           state.res = String(num);
         }
       }
-
-      
       state.sign = action.payload;
-      state.history = `${state.res} ${action.payload}`;
-      state.num = ""; 
+      state.num = "";
     },
 
     calculate: (state) => {
@@ -72,7 +54,6 @@ const calculatorSlice = createSlice({
         default: break;
       }
 
-      state.history =` ${state.res} ${state.sign} ${state.num} =`;
       state.res = String(result);
       state.num = "";
       state.sign = "";
@@ -81,7 +62,7 @@ const calculatorSlice = createSlice({
     invert: (state) => {
       if (state.num !== "") {
         state.num = String(-parseFloat(state.num));
-      } else {
+      } else if (state.res !== "") {
         state.res = String(-parseFloat(state.res));
       }
     },
@@ -89,14 +70,14 @@ const calculatorSlice = createSlice({
     percent: (state) => {
       if (state.num !== "") {
         state.num = String(parseFloat(state.num) / 100);
-      } else {
+      } else if (state.res !== "") {
         state.res = String(parseFloat(state.res) / 100);
       }
     },
 
     clearEntry: (state) => {
-      state.num = "";
-    }
+      state.num = ""; 
+    },
   },
 });
 
@@ -107,7 +88,7 @@ export const {
   calculate,
   invert,
   percent,
-  clearEntry
+  clearEntry,
 } = calculatorSlice.actions;
 
 export default calculatorSlice.reducer;

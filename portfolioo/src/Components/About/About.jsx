@@ -7,7 +7,7 @@ const About =()=> {
     return(
         <div id='about' className='about'>
             <div className="about-title">
-                <h1 >About me</h1>
+                <h1 style={{color:"rgba(230, 124, 202, 1)"}}>About me</h1>
                 </div><br/> <br/>
                 <div className="about-sections">
                     

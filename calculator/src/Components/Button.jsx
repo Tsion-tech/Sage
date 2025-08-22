@@ -3,7 +3,7 @@ import React from "react";
 const Button = ({ value, onClick, className }) => {
   return (
     <button
-      onClick={onClick}
+      onClick={() => onClick(value)} 
       className={className}
       style={{
         height: "60px",
@@ -13,7 +13,7 @@ const Button = ({ value, onClick, className }) => {
         cursor: "pointer",
         background: value === "=" ? "#f76c6c" : "#393e46",
         color: "#fff",
-        gridColumn: value === "=" ? "span 2" : "span 1", 
+        gridColumn: value === "=" ? "span 2" : "span 1",
       }}
     >
       {value}

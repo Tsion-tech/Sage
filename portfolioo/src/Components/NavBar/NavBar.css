@@ -1,0 +1,49 @@
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 170px;
+}
+
+.nav-menu{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 60px;
+    font-size: 20px;
+}
+.nav-logo{
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    list-style: none;
+    gap: 100px;
+    
+    color: orange;
+}
+
+.nav-connect{
+    padding: 15px 15px;
+    border-radius: 50px;
+    background: linear-gradient(267deg,#169de6 0.36%,#B923E1 102%);
+    font-size: 22px;
+    cursor: pointer;
+    align-items: center;
+
+}
+.nav-connect:hover{
+    transform: scale(1.05);
+}
+.nav-menu li{
+    display:flex;
+    flex-direction: column;
+    gap:5px;
+    cursor:pointer;
+}
+.nav-menu li img{
+    display: flex;
+    margin: auto;
+}
+.anchor-link{text-decoration: none;
+    color:white;
+}

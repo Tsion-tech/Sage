@@ -1,9 +1,8 @@
 import React from "react";
 
-const Screen = ({ value,history }) => {
+const Screen = ({ value }) => {
   return (
-  
-    <div className="history"
+    <div
       style={{
         height: "80px",
         marginBottom: "10px",
@@ -17,13 +16,8 @@ const Screen = ({ value,history }) => {
         borderRadius: "8px",
       }}
     >
-       
-       
       {value}
-      
     </div>
-   
-    
   );
 };
 

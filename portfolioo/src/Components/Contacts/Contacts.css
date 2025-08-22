@@ -1,4 +1,4 @@
-.contact-section {
+.contact {
     display: flex;
     flex-direction: row;   
     justify-content: space-between;
@@ -6,7 +6,6 @@
     gap: 50px;
     width: 800%;
     max-width: 1200px;
-    
     background: radial-gradient(
         circle at center,
         rgba(185,35,225,0.25)0%,
@@ -16,7 +15,6 @@
 
 p{
     margin: 12px;;
-    
 }
 .contact-left {
     flex: 1;
