@@ -5,7 +5,7 @@ export default function SearchBar({ query, setQuery, onSearch }) {
     <View style={styles.container}>
       <TextInput
         style={styles.input}
-        placeholder="🍓 Enter barcode (e.g. 737628064502)"
+        placeholder="🍓 Enter barcode "
         value={query}
         onChangeText={setQuery}
         onSubmitEditing={onSearch}
