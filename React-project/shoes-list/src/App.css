@@ -1,0 +1,147 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f6fa;
+  margin: 0;
+  padding: 0;
+  color: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 500px; 
+  background: white;
+  border-radius: 15px;
+  padding: 30px 20px;
+  box-shadow: 0px 8px 25px rgba(238, 79, 209, 0.2);
+  text-align: center;
+}
+
+
+.top-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+h1 {
+  color:    rgb(234, 27, 234);
+  margin-bottom: 20px;
+}
+
+
+.add-btn {
+  background: rgb(31, 216, 245);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.add-btn:hover {
+  background:   rgb(234, 27, 234);
+}
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+  animation: fadeIn 0.3s ease-in;
+}
+.form input {
+  padding: 10px;
+  border: 2px solid rgb(31, 216, 245);
+  border-radius: 6px;
+  font-size: 16px;
+}
+.btn {
+  background: rgb(31, 216, 245);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn:hover {
+  background:    rgb(234, 27, 234);
+}
+.cancel-btn {
+  background: #ccc;
+  color: #333;
+}
+.cancel-btn:hover {
+  background: #999;
+}
+.form-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+.card {
+  background: #f0f0f5;
+  border-radius: 10px;
+  padding: 15px;
+  transition: transform 0.2s;
+}
+.card:hover {
+  transform: translateY(-3px);
+}
+.card h2 {
+  color:    rgb(234, 27, 234);
+  margin: 0 0 5px 0;
+  font-size: 18px;
+}
+.card p {
+  color: rgb(31, 216, 245);
+  font-weight: bold;
+  margin: 0;
+}
+.actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.edit, .delete {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.edit {
+  background:  rgb(234, 27, 234);
+  color: white;
+}
+.edit:hover {
+  background: darkviolet;
+}
+.delete {
+  background: rgb(31, 216, 245);
+  color: white;
+}
+.delete:hover {
+  background: rgb(5, 101, 116);
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
