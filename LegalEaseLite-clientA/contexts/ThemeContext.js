@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 const ThemeContext = createContext();
 
@@ -12,16 +11,12 @@ export const ThemeProvider = ({ children }) => {
     text: isDark ? "#fff" : "#1a1a1a",
     highlight1: "#6a11cb", // purple
     highlight2: "#2575fc", // blue
-    shadow: isDark ? "#000" : "#999",
+    shadow: isDark ? "#000" : "#999"
   };
 
   return (
-    <ThemeContext.Provider
-      value={{ theme, isDark, toggle: () => setIsDark(!isDark) }}
-    >
-      <SafeAreaView style={{ flex: 1, backgroundColor: theme.background }}>
-        {children}
-      </SafeAreaView>
+    <ThemeContext.Provider value={{ theme, isDark, toggle: () => setIsDark(!isDark) }}>
+      {children}
     </ThemeContext.Provider>
   );
 };
