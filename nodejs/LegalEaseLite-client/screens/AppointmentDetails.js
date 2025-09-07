@@ -1,117 +1,74 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, FlatList, TouchableOpacity, StyleSheet, Dimensions } from "react-native";
-import { useTheme } from "../contexts/ThemeContext";
+import React, { useEffect } from 'react';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchAppointments } from '../redux/appointmentsSlice';
+import ChatBox from '../components/ChatBox';
+import ReminderModal from '../components/ReminderModal';
+import { useTheme } from '../contexts/ThemeContext';
 
-const { width } = Dimensions.get("window");
-
-const AppointmentDetails = ({ route, navigation }) => {
+const AppointmentDetails = ({ route }) => {
+  const { id } = route.params;
+  const dispatch = useDispatch();
+  const { list } = useSelector(state => state.appointments);
   const { theme } = useTheme();
-  const { appointment, tab } = route.params;
 
-  const [messages, setMessages] = useState({});
-  const [newMessage, setNewMessage] = useState("");
-  const [reminderDate, setReminderDate] = useState("");
+  const appointment = list.find(a => a._id === id);
 
-  const sendMessage = () => {
-    if (!newMessage) return;
-    setMessages((prev) => ({
-      ...prev,
-      [appointment.id]: [...(prev[appointment.id] || []), { id: Date.now().toString(), text: newMessage, from: "client" }],
-    }));
-    setNewMessage("");
-  };
+  useEffect(() => {
+    if (!appointment) dispatch(fetchAppointments());
+  }, []);
 
-  const deleteLastMessage = () => {
-    const chat = messages[appointment.id] || [];
-    if (!chat.length) return;
-
-    const updated = [...chat];
-    for (let i = updated.length - 1; i >= 0; i--) {
-      if (updated[i].from === "client") {
-        updated.splice(i, 1);
-        break;
-      }
-    }
-    setMessages((prev) => ({ ...prev, [appointment.id]: updated }));
-  };
-
-  const setReminder = () => {
-    if (!reminderDate) return;
-    alert(`Reminder set for ${appointment.title} at ${reminderDate}`);
-    setReminderDate("");
-  };
-
-  if (tab === "chat") {
-    const chat = messages[appointment.id] || [];
+  if (!appointment)
     return (
       <View style={[styles.container, { backgroundColor: theme.background }]}>
-        <Text style={[styles.title, { color: theme.highlight1 }]}>{`💬 Chat: ${appointment.title}`}</Text>
-        <FlatList
-          data={chat}
-          keyExtractor={(item) => item.id}
-          inverted
-          renderItem={({ item }) => (
-            <View
-              style={[
-                styles.message,
-                {
-                  alignSelf: item.from === "client" ? "flex-end" : "flex-start",
-                  backgroundColor: item.from === "client" ? theme.highlight2 : "#eee",
-                },
-              ]}
-            >
-              <Text style={{ color: item.from === "client" ? "#fff" : "#111", fontSize: 15 }}>{item.text}</Text>
-            </View>
-          )}
-        />
-        <View style={styles.inputRow}>
-          <TextInput
-            value={newMessage}
-            onChangeText={setNewMessage}
-            placeholder="Type a message..."
-            placeholderTextColor="#888"
-            style={[styles.input, { backgroundColor: theme.background, color: theme.text, flex: 1, marginRight: 8 }]}
-          />
-          <TouchableOpacity style={[styles.sendButton, { backgroundColor: theme.highlight2 }]} onPress={sendMessage}>
-            <Text style={styles.sendText}>Send</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={[styles.sendButton, { backgroundColor: theme.highlight1, marginLeft: 4 }]} onPress={deleteLastMessage}>
-            <Text style={styles.sendText}>Delete</Text>
-          </TouchableOpacity>
-        </View>
+        <Text style={[styles.loadingText, { color: theme.text }]}>Loading appointment...</Text>
       </View>
     );
-  } else if (tab === "reminder") {
-    return (
-      <View style={[styles.container, { backgroundColor: theme.background }]}>
-        <Text style={[styles.title, { color: theme.highlight1 }]}>{`🗓 Reminder: ${appointment.title}`}</Text>
-        <TextInput
-          value={reminderDate}
-          onChangeText={setReminderDate}
-          placeholder="YYYY-MM-DD HH:MM"
-          placeholderTextColor="#aaa"
-          style={[styles.input, { borderColor: theme.highlight2, color: theme.text }]}
-        />
-        <TouchableOpacity style={[styles.mainButton, { backgroundColor: theme.highlight2 }]} onPress={setReminder}>
-          <Text style={styles.mainButtonText}>Set Reminder</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
 
-  return null;
+  return (
+    <View style={[styles.container, { backgroundColor: theme.background }]}>
+      {/* Appointment Card */}
+      <View style={[styles.card, { backgroundColor: theme.card, shadowColor: theme.highlight1 }]}>
+        <Text style={[styles.title, { color: theme.highlight1 }]}>{appointment.title}</Text>
+        <Text style={[styles.info, { color: theme.text }]}>
+          Date: {new Date(appointment.date).toLocaleString()}
+        </Text>
+        <Text style={[styles.info, { color: theme.text }]}>Client: {appointment.clientName}</Text>
+      </View>
+
+      {/* Chat Section */}
+      <View style={styles.section}>
+        <Text style={[styles.sectionTitle, { color: theme.highlight1 }]}>💬 Chat</Text>
+        <ChatBox appointmentId={id} />
+      </View>
+
+      {/* Reminder Section */}
+      <View style={styles.section}>
+        <Text style={[styles.sectionTitle, { color: theme.highlight1 }]}>🗓 Reminder</Text>
+        <ReminderModal appointmentId={id} />
+      </View>
+    </View>
+  );
 };
 
 export default AppointmentDetails;
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 20 },
-  title: { fontSize: 22, fontWeight: "700", marginBottom: 20 },
-  input: { padding: 14, borderRadius: 14, borderWidth: 1, fontSize: 15, marginBottom: 14 },
-  inputRow: { flexDirection: "row", alignItems: "center" },
-  sendButton: { paddingVertical: 12, paddingHorizontal: 18, borderRadius: 14, alignItems: "center" },
-  sendText: { color: "#fff", fontWeight: "600" },
-  message: { padding: 12, borderRadius: 14, marginBottom: 10, maxWidth: width * 0.65 },
-  mainButton: { paddingVertical: 14, borderRadius: 14, alignItems: "center", marginTop: 10 },
-  mainButtonText: { color: "#fff", fontWeight: "700", fontSize: 16 },
+  card: {
+    padding: 20,
+    borderRadius: 20,
+    marginBottom: 25,
+    shadowOpacity: 0.15,
+    shadowOffset: { width: 0, height: 8 },
+    shadowRadius: 12,
+    elevation: 6,
+  },
+  title: { fontSize: 22, fontWeight: '700', marginBottom: 8 },
+  info: { fontSize: 16, marginBottom: 6 },
+
+  section: { marginBottom: 20 },
+  sectionTitle: { fontSize: 20, fontWeight: '600', marginBottom: 12 },
+
+  loadingText: { fontSize: 18, textAlign: 'center', marginTop: 50 },
 });

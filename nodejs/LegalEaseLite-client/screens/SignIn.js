@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { 
   View, 
   Text, 
@@ -8,27 +8,37 @@ import {
   Alert, 
   Dimensions, 
   Platform 
-} from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { useTheme } from "../contexts/ThemeContext";
+} from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../redux/userSlice';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-const SignIn = ({ navigation, onLogin }) => {
-  const { theme } = useTheme();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const SignIn = ({ navigation }) => {
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector(state => state.user);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [hovered, setHovered] = useState(false);
 
-  const handleLogin = () => {
-    if (email && password) {
-      onLogin?.(); // triggers AppStack to render MainTabs
-      // removed navigation.reset / replace to avoid navigator errors
+  const handleLogin = async () => {
+    if (!email || !password) {
+      return Alert.alert('Error', 'Please enter email and password');
+    }
+
+    const result = await dispatch(loginUser({ email, password }));
+
+    if (result.meta.requestStatus === 'fulfilled') {
+      navigation.replace('Dashboard');
     } else {
-      Alert.alert("Error", "Please enter email and password");
+      Alert.alert('Login Failed', result.payload?.message || 'Invalid credentials');
     }
   };
 
-  const windowWidth = Dimensions.get("window").width;
-  const cardWidth = windowWidth > 500 ? 420 : "90%"; 
+  const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
+  const cardWidth = windowWidth > 500 ? 420 : "90%";
+  const cardMinHeight = windowHeight * 0.55; // 55% of screen height
+  const cardMaxHeight = windowHeight * 0.85; // 85% of screen height
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -38,7 +48,7 @@ const SignIn = ({ navigation, onLogin }) => {
         <View
           style={[
             styles.card,
-            { width: cardWidth },
+            { width: cardWidth, minHeight: cardMinHeight, maxHeight: cardMaxHeight },
             hovered && styles.cardHover
           ]}
           onMouseEnter={() => setHovered(true)}
@@ -65,15 +75,15 @@ const SignIn = ({ navigation, onLogin }) => {
             onChangeText={setPassword}
           />
 
-          <TouchableOpacity style={styles.button} onPress={handleLogin}>
-            <Text style={styles.buttonText}>Sign In</Text>
+          <TouchableOpacity style={styles.button} onPress={handleLogin} disabled={loading}>
+            <Text style={styles.buttonText}>{loading ? 'Signing in...' : 'Sign In'}</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-            <Text style={styles.linkText}>
-              Don't have an account? Sign Up
-            </Text>
+          <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+            <Text style={styles.linkText}>Don't have an account? Sign Up</Text>
           </TouchableOpacity>
+
+          {error && <Text style={styles.error}>{error}</Text>}
         </View>
       </View>
     </SafeAreaView>
@@ -82,7 +92,6 @@ const SignIn = ({ navigation, onLogin }) => {
 
 export default SignIn;
 
-// ===== styles remain unchanged =====
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
@@ -92,6 +101,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    paddingVertical: 20,
   },
   background: {
     ...StyleSheet.absoluteFillObject,
@@ -109,8 +119,6 @@ const styles = StyleSheet.create({
     shadowRadius: 25,
     shadowOffset: { width: 0, height: 15 },
     elevation: 15,
-    minHeight: 450,
-    maxWidth: 450,
     transitionProperty: "all",
     transitionDuration: "0.3s",
   },
@@ -124,6 +132,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     marginBottom: 30,
     color: "#A374FF",
+    textAlign: "center",
   },
   input: {
     width: "100%",
@@ -164,5 +173,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#FF6FD8",
     textDecorationLine: "underline",
+  },
+  error: {
+    color: 'red',
+    textAlign: 'center',
+    marginTop: 10,
   },
 });
